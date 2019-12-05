@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activitys.CadastrarAnimeActivity">
+
+        <TextView
+            android:id="@+id/tv_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cadastrar Animes"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="35dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Nome: "
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <EditText
+                android:id="@+id/et_nome_usuario_cadastro_anime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:inputType="textEmailAddress"
+                android:text="Ano Lançamento"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <EditText
+                android:id="@+id/et_ano_cadastro_anime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_numEpisodio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Número Episódios: "
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <EditText
+                android:id="@+id/et_numEpisodio_cadastro_anime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_nota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Nota Inicial: "
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <EditText
+                android:id="@+id/et_nota_cadastro_anime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_Selecionar_Imagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Selecione a Imagem: "
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <Button
+                android:id="@+id/local_imagem"
+                android:layout_width="206dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="150dp"
+                android:text="Buscar Imagem" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_sinopse_usuario_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="Sinopse"
+
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="150dp"
+            android:onClick="confirmar_cadastro"
+            android:text="cadastrar" />
+    </LinearLayout>
+</ScrollView>
