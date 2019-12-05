@@ -41,15 +41,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rank" />
+            android:text="Hank" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome: "/>
+            android:text="Buscar por Nome: "/>
         <EditText
             android:id="@+id/et_busca_nome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
