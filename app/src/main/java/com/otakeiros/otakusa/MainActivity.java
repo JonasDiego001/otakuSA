@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import com.otakeiros.otakusa.activitys.CadastrarAnimeActivity;
 import com.otakeiros.otakusa.activitys.CadastrarUsuarioActivity;
 import com.otakeiros.otakusa.activitys.GerenciarFansub;
+import com.otakeiros.otakusa.activitys.PerfilUsuario;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(getApplicationContext(), CadastrarAnimeActivity.class));
+        startActivity(new Intent(getApplicationContext(), PerfilUsuario.class));
 
 
         Spinner spinnerLetra = findViewById(R.id.sp_alfabeto);
