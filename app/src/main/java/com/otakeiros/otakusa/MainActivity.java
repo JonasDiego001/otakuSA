@@ -1,6 +1,8 @@
 package com.otakeiros.otakusa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.otakeiros.otakusa.activitys.CadastrarUsuarioActivity;
+import com.otakeiros.otakusa.adapters.ItemAdapter;
 
 import java.util.ArrayList;
 
@@ -29,5 +32,12 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterAno = ArrayAdapter.createFromResource(this,R.array.ano,android.R.layout.simple_spinner_dropdown_item);
         adapterAno.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAno.setAdapter(adapterAno);
+
+        RecyclerView rvItem = findViewById(R.id.rv_item);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        ItemAdapter itemAdapter = new ItemAdapter(getApplicationContext());
+        rvItem.setAdapter(itemAdapter);
+        rvItem.setLayoutManager(layoutManager);
+
     }
 }
