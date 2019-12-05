@@ -9,11 +9,12 @@ import android.view.View;
 import com.otakeiros.otakusa.R;
 
 public class PerfilUsuario extends AppCompatActivity {
-
+    private Integer a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
+
     }
 
     public void editar_usuario(View view) {
