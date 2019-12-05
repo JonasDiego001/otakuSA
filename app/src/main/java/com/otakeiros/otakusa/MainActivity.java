@@ -1,16 +1,16 @@
 package com.otakeiros.otakusa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.otakeiros.otakusa.activitys.CadastrarAnimeActivity;
 import com.otakeiros.otakusa.activitys.CadastrarUsuarioActivity;
-import com.otakeiros.otakusa.adapters.ItemAdapter;
+import com.otakeiros.otakusa.activitys.GerenciarFansub;
+import com.otakeiros.otakusa.activitys.PerfilUsuario;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(getApplicationContext(), CadastrarUsuarioActivity.class));
+        startActivity(new Intent(getApplicationContext(), PerfilUsuario.class));
 
 
         Spinner spinnerLetra = findViewById(R.id.sp_alfabeto);
@@ -32,12 +32,5 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterAno = ArrayAdapter.createFromResource(this,R.array.ano,android.R.layout.simple_spinner_dropdown_item);
         adapterAno.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAno.setAdapter(adapterAno);
-
-        RecyclerView rvItem = findViewById(R.id.rv_item);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
-        ItemAdapter itemAdapter = new ItemAdapter(getApplicationContext());
-        rvItem.setAdapter(itemAdapter);
-        rvItem.setLayoutManager(layoutManager);
-
     }
 }
