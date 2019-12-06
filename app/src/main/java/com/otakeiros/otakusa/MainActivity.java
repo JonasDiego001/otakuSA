@@ -33,5 +33,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterAno = ArrayAdapter.createFromResource(this,R.array.ano,android.R.layout.simple_spinner_dropdown_item);
         adapterAno.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAno.setAdapter(adapterAno);
+
+
     }
 }

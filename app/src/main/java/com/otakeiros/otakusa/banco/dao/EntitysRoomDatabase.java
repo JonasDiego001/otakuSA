@@ -19,7 +19,7 @@ public abstract class EntitysRoomDatabase extends RoomDatabase {
 
     private static volatile EntitysRoomDatabase INSTANCE;
 
-    public static androidx.room.RoomDatabase getDatabase(final Context context) {
+    public static EntitysRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (EntitysRoomDatabase.class) {
                 if (INSTANCE == null) {
