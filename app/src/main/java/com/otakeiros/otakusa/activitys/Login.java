@@ -16,6 +16,8 @@ import com.otakeiros.otakusa.banco.dao.UsuarioDao;
 import com.otakeiros.otakusa.banco.repositorios.UsuarioRepositorio;
 import com.otakeiros.otakusa.entidades.Usuario;
 
+import java.security.spec.ECField;
+
 import static com.otakeiros.otakusa.MainActivity.USUARIO_LOGADO;
 
 public class Login extends AppCompatActivity {
@@ -52,7 +54,6 @@ public class Login extends AppCompatActivity {
 
     private void validarUsuario(String email, String senha) {
         new validarUserAsyncTask(mDao).execute(email, senha);
-
     }
 
     public void cadastrar(View view) {
@@ -69,12 +70,14 @@ public class Login extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(String... string) {
             Usuario user = new Usuario();
-            user = dao.get_user(string[0]).get(0);
-            if (string[1].equals(user.getSenha()))
-                return true;
-            else {
+            try{
+                user = dao.get_user(string[0]).get(0);
+                if (string[1].equals(user.getSenha()))
+                    return true;
+            }catch (Exception e){
                 return false;
             }
+            return false;
         }
 
         @Override

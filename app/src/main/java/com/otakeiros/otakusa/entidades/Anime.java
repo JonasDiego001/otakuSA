@@ -73,8 +73,4 @@ public class Anime {
         return sinops;
     }
 
-    @NonNull
-    public Integer getId() { return id; }
-
-    public void setId(@NonNull Integer id) {this.id = id;}
 }
