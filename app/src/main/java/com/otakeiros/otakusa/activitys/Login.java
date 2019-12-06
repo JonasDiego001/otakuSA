@@ -36,6 +36,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void cadastrar(View view) {
-        
+
     }
 }

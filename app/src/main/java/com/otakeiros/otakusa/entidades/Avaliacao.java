@@ -1,22 +1,23 @@
 package com.otakeiros.otakusa.entidades;
 
-public class Permisao {
+public class Avaliacao {
     private Integer id;
-    private Boolean permisao;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setPermisao(Boolean permisao) {
-        this.permisao = permisao;
+    public void setNota(Double nota) {
+        this.nota = nota;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Boolean getPermisao() {
-        return permisao;
+    public Double getNota() {
+        return nota;
     }
+
+    private Double nota;
 }
