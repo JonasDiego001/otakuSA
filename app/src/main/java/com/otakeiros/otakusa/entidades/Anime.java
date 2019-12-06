@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "anime")
 public class Anime {
+
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
@@ -70,4 +72,9 @@ public class Anime {
     public String getSinops() {
         return sinops;
     }
+
+    @NonNull
+    public Integer getId() { return id; }
+
+    public void setId(@NonNull Integer id) {this.id = id;}
 }
