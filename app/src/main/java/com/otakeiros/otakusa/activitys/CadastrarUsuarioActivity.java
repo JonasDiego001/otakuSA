@@ -2,20 +2,25 @@ package com.otakeiros.otakusa.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.otakeiros.otakusa.R;
+import com.otakeiros.otakusa.banco.repositorios.UsuarioRepositorio;
 import com.otakeiros.otakusa.entidades.Usuario;
 
 public class CadastrarUsuarioActivity extends AppCompatActivity {
+
+    private UsuarioRepositorio mRepositorio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_usuario);
-
+        mRepositorio = new UsuarioRepositorio(getApplication());
 
     }
 
@@ -46,7 +51,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
             et_frase.requestFocus();
         else if (et_conirmacao_senha.getText().toString().equals(""))
             et_conirmacao_senha.requestFocus();
-        else{
+        else {
             nome = et_nome.getText().toString();
             senha = et_senha.getText().toString();
             nick = et_nick.getText().toString();
@@ -54,7 +59,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
             confirmacao_senha = et_conirmacao_senha.getText().toString();
             frase = et_frase.getText().toString();
 
-            if(senha.equals(confirmacao_senha)){
+            if (senha.equals(confirmacao_senha)) {
 
                 Usuario user = new Usuario();
 
@@ -63,8 +68,11 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                 user.setNick(nick);
                 user.setNome(nome);
                 user.setSenha(senha);
-            }
-            else{
+
+                mRepositorio.inserirUsuario(user);
+                startActivity(new Intent(getApplicationContext(),Login.class));
+
+            } else {
                 et_conirmacao_senha.requestFocus();
                 //senha não condiz com a senha de confirmação;
             }
