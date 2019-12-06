@@ -1,11 +1,23 @@
 package com.otakeiros.otakusa.entidades;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.PrimaryKey;
+
 public class Anime {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "id")
+    private Integer id;
+    @ColumnInfo(name = "nome")
     private String nome;
+    @ColumnInfo(name = "anoLancamento")
     private Integer AnoLancamento;
+    @ColumnInfo(name = "numEpisodio")
     private Integer numEpisodio;
-    private Boolean censura;
+    @ColumnInfo(name = "notaMedia")
     private Integer notaMedia;
+    @ColumnInfo(name = "sinops")
     private String sinops;
 
     public void setNome(String nome) {
@@ -18,10 +30,6 @@ public class Anime {
 
     public void setNumEpisodio(Integer numEpisodio) {
         this.numEpisodio = numEpisodio;
-    }
-
-    public void setCensura(Boolean censura) {
-        this.censura = censura;
     }
 
     public void setNotaMedia(Integer notaMedia) {
@@ -42,10 +50,6 @@ public class Anime {
 
     public Integer getNumEpisodio() {
         return numEpisodio;
-    }
-
-    public Boolean getCensura() {
-        return censura;
     }
 
     public Integer getNotaMedia() {

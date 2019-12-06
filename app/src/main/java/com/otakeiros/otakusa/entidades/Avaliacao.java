@@ -1,7 +1,16 @@
 package com.otakeiros.otakusa.entidades;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.PrimaryKey;
+
 public class Avaliacao {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "id")
     private Integer id;
+    @ColumnInfo(name = "nota")
+    private Double nota;
 
     public void setId(Integer id) {
         this.id = id;
@@ -18,6 +27,4 @@ public class Avaliacao {
     public Double getNota() {
         return nota;
     }
-
-    private Double nota;
 }

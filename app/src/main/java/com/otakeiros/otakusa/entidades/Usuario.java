@@ -1,11 +1,12 @@
 package com.otakeiros.otakusa.entidades;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "usuario")
 public class Usuario {
-
 
     @ColumnInfo (name = "nome")
     private String nome;
@@ -13,6 +14,7 @@ public class Usuario {
     private String nick;
     @ColumnInfo (name = "senha")
     private String senha;
+    @PrimaryKey @NonNull
     @ColumnInfo (name = "email")
     private String email;
 
