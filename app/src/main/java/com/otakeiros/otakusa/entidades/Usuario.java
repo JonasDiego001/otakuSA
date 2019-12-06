@@ -1,10 +1,19 @@
 package com.otakeiros.otakusa.entidades;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+
+@Entity(tableName = "usuario")
 public class Usuario {
 
+
+    @ColumnInfo (name = "nome")
     private String nome;
+    @ColumnInfo (name = "nick")
     private String nick;
+    @ColumnInfo (name = "senha")
     private String senha;
+    @ColumnInfo (name = "email")
     private String email;
 
     public void setNome(String nome) {
