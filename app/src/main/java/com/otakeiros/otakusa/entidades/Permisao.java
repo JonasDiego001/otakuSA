@@ -13,22 +13,23 @@ public class Permisao {
     @ColumnInfo(name = "id")
     private Integer id;
 
-    @ColumnInfo(name = "permisao")
-    private Boolean permisao;
+    @ColumnInfo(name = "permi")
+    private Boolean permi;
 
-    public void setId(Integer id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
-    public void setPermisao(Boolean permisao) {
-        this.permisao = permisao;
+    public void setPermi(Boolean permi) {
+        this.permi = permi;
     }
 
+    @NonNull
     public Integer getId() {
         return id;
     }
 
-    public Boolean getPermisao() {
-        return permisao;
+    public Boolean getPermi() {
+        return permi;
     }
 }

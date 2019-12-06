@@ -2,8 +2,10 @@ package com.otakeiros.otakusa.entidades;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity(tableName = "anime")
 public class Anime {
     @PrimaryKey
     @NonNull
