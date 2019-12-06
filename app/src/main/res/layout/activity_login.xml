@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activitys.Login"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/fundoanime_foreground">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="#fff"
+        android:alpha="0.7"
+        android:layout_marginTop="200dp">
 
     <TextView
         android:id="@+id/tv_gerenciar"
@@ -15,7 +25,7 @@
         android:text="Login"
         android:textSize="20sp"
         tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="35dp" />
+        tools:layout_editor_absoluteY="35dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Cadastrar"
         android:onClick="cadastrar"/>
-
+    </LinearLayout>
 
 
 </LinearLayout>

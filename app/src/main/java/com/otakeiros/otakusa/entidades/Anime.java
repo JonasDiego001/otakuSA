@@ -18,7 +18,7 @@ public class Anime {
     @ColumnInfo(name = "numEpisodio")
     private Integer numEpisodio;
     @ColumnInfo(name = "notaMedia")
-    private Integer notaMedia;
+    private Double notaMedia;
     @ColumnInfo(name = "sinops")
     private String sinops;
 
@@ -34,10 +34,6 @@ public class Anime {
         this.numEpisodio = numEpisodio;
     }
 
-    public void setNotaMedia(Integer notaMedia) {
-        this.notaMedia = notaMedia;
-    }
-
     public void setSinops(String sinops) {
         this.sinops = sinops;
     }
@@ -50,11 +46,24 @@ public class Anime {
         return AnoLancamento;
     }
 
+    @NonNull
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
+    }
+
+    public void setNotaMedia(Double notaMedia) {
+        this.notaMedia = notaMedia;
+    }
+
     public Integer getNumEpisodio() {
         return numEpisodio;
     }
 
-    public Integer getNotaMedia() {
+    public Double getNotaMedia() {
         return notaMedia;
     }
 
