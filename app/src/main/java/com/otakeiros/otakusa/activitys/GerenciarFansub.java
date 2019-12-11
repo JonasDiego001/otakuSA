@@ -53,7 +53,7 @@ public class GerenciarFansub extends AppCompatActivity {
             Fansub fan = new Fansub();
 
             fan.setNome(nome);
-            mRepositorio.inserirFansub(fan);
+            //mRepositorio.inserirFansub(fan);
         }
     }
 
