@@ -1,6 +1,7 @@
 package com.otakeiros.otakusa.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,6 +24,7 @@ import static com.otakeiros.otakusa.MainActivity.USUARIO_LOGADO;
 public class Login extends AppCompatActivity {
     private UsuarioRepositorio mRepositorio;
     private UsuarioDao mDao;
+    public Toolbar toob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,11 @@ public class Login extends AppCompatActivity {
         mRepositorio = new UsuarioRepositorio(getApplication());
         EntitysRoomDatabase database = EntitysRoomDatabase.getDatabase(getApplication());
         mDao = database.userDao();
+
+        //título da tela
+        toob = (Toolbar) findViewById(R.id.tubar);
+        setSupportActionBar(toob);
+        getSupportActionBar().setTitle("Login");
     }
 
     public void confirmar_login(View view) {
@@ -96,6 +103,7 @@ public class Login extends AppCompatActivity {
 
     private void entrar() {
         USUARIO_LOGADO = true;
+        finish();
         startActivity(new Intent(this, MainActivity.class));
     }
 }

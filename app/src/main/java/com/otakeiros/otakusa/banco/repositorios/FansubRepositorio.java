@@ -2,15 +2,15 @@ package com.otakeiros.otakusa.banco.repositorios;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-import com.otakeiros.otakusa.banco.dao.AnimeDao;
 import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
 import com.otakeiros.otakusa.banco.dao.FansubDao;
-import com.otakeiros.otakusa.entidades.Anime;
 import com.otakeiros.otakusa.entidades.Fansub;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FansubRepositorio {
@@ -24,12 +24,12 @@ public class FansubRepositorio {
         mDao = database.fansubDao();
     }
 
-    /*public void inserirFansub(Fansub fan) {
+    public void inserirFansub(Fansub fan) {
         new insertAsyncTask(mDao).execute(fan);
-    }*/
+    }
 
-    public void deleteAllFansub() {
-        mDao.delete_all_fansub();
+    public void deleteAllFansub(Integer id, Boolean habilitado) {
+        mDao.delete_fansub(id,habilitado);
     }
 
     public List<Fansub> getFansub(Integer id) {
@@ -38,27 +38,30 @@ public class FansubRepositorio {
         return fans;
     }
 
-    public LiveData<List<Fansub>> getAllFansub() {
+    public List<Fansub> getAllFansub() {
         return mDao.getAllFansub();
     }
 
-    public void updateFansub(String nome) {
-        new updateAsyncTask(mDao).execute(nome);
+    public void updateFansub(Fansub fansub) {
+        new updateAsyncTask(mDao).execute(fansub);
     }
 
 
-   /* private class insertAsyncTask extends AsyncTask<Anime, Void, Void> {
+   public static class insertAsyncTask extends AsyncTask<Fansub, Void, Void> {
+       FansubDao dao;
+
         public insertAsyncTask(FansubDao mDao) {
-        }
+            dao = mDao;
+   }
 
         @Override
         protected Void doInBackground(Fansub... fansubs) {
-            mDao.insert_fansub(fansubs[0]);
+            dao.insert_fansub(fansubs[0]);
             return null;
         }
-    }*/
+    }
 
-    private class updateAsyncTask extends AsyncTask<String, Void, Void> {
+    private class updateAsyncTask extends AsyncTask<Fansub, Void, Void> {
 
         FansubDao mDao;
 
@@ -67,8 +70,8 @@ public class FansubRepositorio {
         }
 
         @Override
-        protected Void doInBackground(String... params) {
-            mDao.update_fansub(params[2], Integer.parseInt(params[0]));
+        protected Void doInBackground(Fansub... fansubs) {
+            mDao.update_fansub(fansubs[0].getNome(),fansubs[0].getId());
             return null;
         }
     }

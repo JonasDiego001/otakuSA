@@ -1,6 +1,7 @@
 package com.otakeiros.otakusa.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.otakeiros.otakusa.entidades.Usuario;
 
 public class CadastrarUsuarioActivity extends AppCompatActivity {
 
+    public Toolbar toob;
     private UsuarioRepositorio mRepositorio;
 
     @Override
@@ -22,6 +24,9 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_usuario);
         mRepositorio = new UsuarioRepositorio(getApplication());
 
+        toob = (Toolbar) findViewById(R.id.tubar);
+        setSupportActionBar(toob);
+        getSupportActionBar().setTitle("Cadastro Usuario");
     }
 
     public void confirmar_cadastro(View view) {

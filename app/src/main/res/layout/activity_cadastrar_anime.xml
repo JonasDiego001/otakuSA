@@ -9,15 +9,13 @@
         android:orientation="vertical"
         tools:context=".activitys.CadastrarAnimeActivity">
 
-        <TextView
-            android:id="@+id/tv_cadastro"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tubar"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Cadastrar Animes"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="110dp"
-            tools:layout_editor_absoluteY="35dp" />
+            android:background="?attr/colorPrimary">
+        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:inputType="textEmailAddress"
                 android:text="Ano Lançamento"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="179dp"
@@ -59,7 +56,8 @@
             <EditText
                 android:id="@+id/et_ano_cadastro_anime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
 
         </LinearLayout>
 
@@ -82,7 +80,8 @@
             <EditText
                 android:id="@+id/et_numEpisodio_cadastro_anime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
 
         </LinearLayout>
 
@@ -105,7 +104,7 @@
                 android:id="@+id/et_nota_cadastro_anime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="number"/>
 
         </LinearLayout>
 
