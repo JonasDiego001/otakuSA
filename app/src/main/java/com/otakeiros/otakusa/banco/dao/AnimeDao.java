@@ -41,4 +41,7 @@ public interface AnimeDao {
     @Query("UPDATE anime SET notaMedia=:notaMedia WHERE id=:id")
     void update_notaMedia(Double notaMedia,Integer id);
 
+    @Query("UPDATE anime SET numEpisodio=:numEpisodio WHERE id=:id")
+    void update_numEpisodio(Integer numEpisodio,Integer id);
+
 }

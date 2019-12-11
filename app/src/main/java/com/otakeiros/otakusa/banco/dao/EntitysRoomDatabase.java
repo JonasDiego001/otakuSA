@@ -15,9 +15,9 @@ import com.otakeiros.otakusa.entidades.Permisao;
 import com.otakeiros.otakusa.entidades.Usuario;
 
 
-
 @Database(entities = {Usuario.class, Fansub.class, Permisao.class, Imagem.class, Avaliacao.class, Anime.class,}, version = 1, exportSchema = false)
 public abstract class EntitysRoomDatabase extends RoomDatabase {
+
 
     public abstract UsuarioDao userDao();
     public abstract FansubDao fansubDao();
