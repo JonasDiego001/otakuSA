@@ -64,6 +64,7 @@
         <EditText
             android:id="@+id/et_senha_login"
             android:layout_width="match_parent"
+            android:inputType="textPassword"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

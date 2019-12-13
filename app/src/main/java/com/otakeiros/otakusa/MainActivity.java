@@ -23,7 +23,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public Toolbar toob;
-    public static Boolean USUARIO_LOGADO = false;
+    public static String USUARIO_LOGADO = null;
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Animes");
 
 
-        if (!USUARIO_LOGADO)
+        if (USUARIO_LOGADO == null)
             startActivity(new Intent(getApplicationContext(), Login.class));
 
         Spinner spinnerLetra = findViewById(R.id.sp_alfabeto);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterAno = ArrayAdapter.createFromResource(this, R.array.ano, android.R.layout.simple_spinner_dropdown_item);
         adapterAno.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAno.setAdapter(adapterAno);
+
     }
 
     @Override

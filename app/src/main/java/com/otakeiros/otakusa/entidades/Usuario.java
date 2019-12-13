@@ -17,6 +17,17 @@ public class Usuario {
     @PrimaryKey @NonNull
     @ColumnInfo (name = "email")
     private String email;
+    @ColumnInfo (name = "habilitado")
+    private Boolean habilitado;
+
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+
 
     public void setNome(String nome) {
         this.nome = nome;

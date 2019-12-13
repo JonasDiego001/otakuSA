@@ -10,6 +10,8 @@ import com.otakeiros.otakusa.R;
 
 public class EditarUsuario extends AppCompatActivity {
     public Toolbar toob;
+    private String login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,7 @@ public class EditarUsuario extends AppCompatActivity {
         toob = (Toolbar) findViewById(R.id.tubar);
         setSupportActionBar(toob);
         getSupportActionBar().setTitle("Editar Usuario");
+
     }
 
     public void confirmar_edicao(View view) {

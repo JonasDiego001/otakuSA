@@ -130,7 +130,15 @@
                 android:layout_marginRight="150dp"
                 android:text="Buscar Imagem" />
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/tv_Selecionar_Fansub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Selecione a Fansub "
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
         <EditText
             android:id="@+id/et_sinopse_usuario_cadastro"
             android:layout_width="match_parent"

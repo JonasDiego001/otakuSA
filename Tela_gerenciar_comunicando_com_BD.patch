@@ -1,0 +1,49 @@
+Index: app/src/main/java/com/otakeiros/otakusa/activitys/Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/otakeiros/otakusa/activitys/Login.java	(date 1576082004000)
++++ app/src/main/java/com/otakeiros/otakusa/activitys/Login.java	(date 1576243033226)
+@@ -25,6 +25,7 @@
+     private UsuarioRepositorio mRepositorio;
+     private UsuarioDao mDao;
+     public Toolbar toob;
++    private String login;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -34,15 +35,9 @@
+         mRepositorio = new UsuarioRepositorio(getApplication());
+         EntitysRoomDatabase database = EntitysRoomDatabase.getDatabase(getApplication());
+         mDao = database.userDao();
+-
+-        //título da tela
+-        toob = (Toolbar) findViewById(R.id.tubar);
+-        setSupportActionBar(toob);
+-        getSupportActionBar().setTitle("Login");
+     }
+ 
+     public void confirmar_login(View view) {
+-        String login;
+         String senha;
+         EditText et_login = findViewById(R.id.et_login_login);
+         EditText et_senha = findViewById(R.id.et_senha_login);
+@@ -54,7 +49,6 @@
+         else {
+             login = et_login.getText().toString();
+             senha = et_senha.getText().toString();
+-
+             validarUsuario(login, senha);
+         }
+     }
+@@ -102,8 +96,7 @@
+     }
+ 
+     private void entrar() {
+-        USUARIO_LOGADO = true;
+-        finish();
++        USUARIO_LOGADO = login;
+         startActivity(new Intent(this, MainActivity.class));
+     }
+ }

@@ -36,10 +36,12 @@ import static com.otakeiros.otakusa.MainActivity.USUARIO_LOGADO;
 public class GerenciarFansub extends AppCompatActivity {
     public Toolbar toob;
     private FansubRepositorio mRepositorio;
-    private FansubDao mDao;
-    private List<Integer> ids;
-    private List<String> conteiner;
-    private Integer idSelecionado;
+    public FansubDao mDao;
+    public List<Integer> ids;
+    public List<String> conteiner;
+    public Integer idSelecionado;
+    public Integer posicaoSelecionada=0;
+    public List<Boolean> habilitado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class GerenciarFansub extends AppCompatActivity {
         toob = (Toolbar) findViewById(R.id.tubar);
         setSupportActionBar(toob);
         getSupportActionBar().setTitle("Gerenciar Fansub");
+
         EntitysRoomDatabase db = EntitysRoomDatabase.getDatabase(getApplication());
         mRepositorio = new FansubRepositorio(getApplication());
         mDao = db.fansubDao();
@@ -74,7 +77,8 @@ public class GerenciarFansub extends AppCompatActivity {
         listaF.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-                idSelecionado = position+1;
+                posicaoSelecionada = position;
+                idSelecionado = ids.get(position);
                 EditText edt_nome = findViewById(R.id.et_nome_gerenciar_fansub);
                 edt_nome.setText(conteiner.get(position));
             }
@@ -109,14 +113,16 @@ public class GerenciarFansub extends AppCompatActivity {
             }
         });
     }
-    private void preencherDados( List<Fansub> dados){
+    private void preencherDados(List<Fansub> dados){
         ListView listaFansub = (ListView) findViewById(R.id.lista_fansub);
         conteiner = new ArrayList<>();
         ids = new ArrayList<>();
+        habilitado = new ArrayList<>();
         for(int i = 0; i<dados.size(); i++){
             if(dados.get(i).getHabilitado() == true) {
                 conteiner.add(dados.get(i).getNome());
                 ids.add(dados.get(i).getId());
+                habilitado.add(dados.get(i).getHabilitado());
             }
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, conteiner);
@@ -159,7 +165,7 @@ public class GerenciarFansub extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private class validarFansubAsyncTask extends AsyncTask<Void, Void, List> {
+    public class validarFansubAsyncTask extends AsyncTask<Void, Void, List> {
         public FansubDao dao;
         public validarFansubAsyncTask(FansubDao fansubDao) {
             dao = fansubDao;
@@ -175,11 +181,6 @@ public class GerenciarFansub extends AppCompatActivity {
             super.onPostExecute(todasFansubs);
 
             if (todasFansubs.size()>0) preencherDados(todasFansubs);
-            else alertError();
         }
-    }
-    private void alertError() {
-        Toast toast = Toast.makeText(this, "Sem Fansubs Cadastradas", Toast.LENGTH_LONG);
-        toast.show();
     }
 }

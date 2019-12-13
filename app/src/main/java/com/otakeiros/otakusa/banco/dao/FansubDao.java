@@ -19,7 +19,7 @@ public interface FansubDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert_fansub(Fansub fansub);
 
-    @Query("UPDATE fansub SET habilitado =:habilitado WHERE id=:id AND habilitado =:habilitado")
+    @Query("UPDATE fansub SET habilitado =:habilitado WHERE id=:id")
     void delete_fansub(Integer id, Boolean habilitado);
 
     @Query("SELECT * FROM fansub WHERE id=:id")

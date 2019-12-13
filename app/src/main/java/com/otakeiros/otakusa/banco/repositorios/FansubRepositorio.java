@@ -2,7 +2,6 @@ package com.otakeiros.otakusa.banco.repositorios;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -10,7 +9,6 @@ import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
 import com.otakeiros.otakusa.banco.dao.FansubDao;
 import com.otakeiros.otakusa.entidades.Fansub;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FansubRepositorio {
@@ -28,9 +26,26 @@ public class FansubRepositorio {
         new insertAsyncTask(mDao).execute(fan);
     }
 
-    public void deleteAllFansub(Integer id, Boolean habilitado) {
-        mDao.delete_fansub(id,habilitado);
+    public void deleteAllFansub(Integer id, Boolean habitat) {
+        Fansub aux = new Fansub();
+        aux.setId(id);
+        aux.setHabilitado(habitat);
+        new daleAsyncTask(mDao).execute(aux);
     }
+    private class daleAsyncTask extends AsyncTask<Fansub, Void, Void> {
+        FansubDao mDao;
+        public daleAsyncTask(FansubDao dao) {
+            mDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Fansub... fansubs) {
+            mDao.delete_fansub(fansubs[0].getId(),fansubs[0].getHabilitado());
+            return null;
+        }
+    }
+
+
 
     public List<Fansub> getFansub(Integer id) {
         List<Fansub> fans;

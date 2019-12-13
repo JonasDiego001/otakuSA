@@ -15,26 +15,51 @@
         android:background="?attr/colorPrimary">
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/et_nome_perfil_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/et_nick_perfil_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/et_email_perfil_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/et_frase_efeito_perfil_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_nome_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="76dp" />
+    <TextView
+        android:id="@+id/tv_email_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="76dp" />
+    <TextView
+        android:id="@+id/tv_nick_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="76dp" />
+    <TextView
+        android:id="@+id/tv_fraseEfeito_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="76dp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:id="@+id/editarUsuario"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:onClick="editar_usuario"
+        android:text="editar" />
+
+    <Button
+        android:id="@+id/apagarUsuario"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"

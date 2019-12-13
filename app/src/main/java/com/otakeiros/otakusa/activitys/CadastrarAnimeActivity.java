@@ -1,34 +1,72 @@
 package com.otakeiros.otakusa.activitys;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.otakeiros.otakusa.MainActivity;
 import com.otakeiros.otakusa.R;
+import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
+import com.otakeiros.otakusa.banco.dao.FansubDao;
 import com.otakeiros.otakusa.banco.repositorios.AnimeRepositorio;
+import com.otakeiros.otakusa.banco.repositorios.FansubRepositorio;
 import com.otakeiros.otakusa.entidades.Anime;
 import androidx.appcompat.widget.Toolbar;
+
+import com.otakeiros.otakusa.entidades.Fansub;
 import com.otakeiros.otakusa.entidades.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CadastrarAnimeActivity extends AppCompatActivity {
     public Toolbar toob;
     private AnimeRepositorio mRepositorio;
+    private FansubRepositorio mRepositorio2;
+    private FansubDao mDao;
+    public List<Integer> ids;
+    public List<String> conteiner;
+    public Integer idSelecionado;
+    public Integer posicaoSelecionada=0;
+    public List<Boolean> habilitado;
+    public static volatile int CONTROLE = 0 ;
+    private String login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_anime);
         mRepositorio = new AnimeRepositorio(getApplication());
 
+        EntitysRoomDatabase db = EntitysRoomDatabase.getDatabase(getApplication());
+        mRepositorio2 = new FansubRepositorio(getApplication());
+        mDao = db.fansubDao();
+        new validarFansubAsyncTask(mDao).execute();
+
         toob = (Toolbar) findViewById(R.id.tubar);
         setSupportActionBar(toob);
         getSupportActionBar().setTitle("Cadrastro Anime");
+
+        TextView tv_sexo = findViewById(R.id.tv_Selecionar_Fansub);
+        tv_sexo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSexoAlertDialog(v);
+            }
+        });
     }
 
     public void confirmar_cadastro(View view) {
@@ -103,5 +141,71 @@ public class CadastrarAnimeActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void getSexoAlertDialog(final View v) {
+
+        final TextView tv = findViewById(R.id.tv_Selecionar_Fansub);
+        AlertDialog.Builder builder = new AlertDialog.Builder(CadastrarAnimeActivity.this);
+        builder.setTitle("Selecione seu sexo");
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                CadastrarAnimeActivity.this,
+                android.R.layout.select_dialog_singlechoice);
+
+
+        for (int i = 0; i<conteiner.size(); i++) {
+            arrayAdapter.add(conteiner.get(i));
+        }
+        builder.setAdapter(arrayAdapter,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("nelore", arrayAdapter.getItem(which));
+                        posicaoSelecionada = which;
+                        dialog.dismiss();
+                        Log.i("nelore", "which ::: -> "+posicaoSelecionada);
+                        tv.setText(conteiner.get(posicaoSelecionada));
+
+                    }
+                });
+        builder.show();
+
+    }
+
+
+    public class validarFansubAsyncTask extends AsyncTask<Void, Void, List> {
+        public FansubDao dao;
+        public validarFansubAsyncTask(FansubDao fansubDao) {
+            dao = fansubDao;
+        }
+        @Override
+        protected List<Fansub> doInBackground(Void... string) {
+            List<Fansub> fansubs = new ArrayList<Fansub>();
+            fansubs = dao.getAllFansub();
+            return fansubs;
+        }
+        @Override
+        protected void onPostExecute(List todasFansubs) {
+            super.onPostExecute(todasFansubs);
+            if (todasFansubs.size()>0) preencherDados(todasFansubs);
+
+        }
+
+        private void preencherDados(List<Fansub> dados){
+
+            Log.i("NELORE", "size --> "+dados.size());
+            conteiner = new ArrayList<>();
+            ids = new ArrayList<>();
+            habilitado = new ArrayList<>();
+            for(int i = 0; i<dados.size(); i++){
+                if(dados.get(i).getHabilitado() == true) {
+                    conteiner.add(dados.get(i).getNome());
+                    ids.add(dados.get(i).getId());
+                    habilitado.add(dados.get(i).getHabilitado());
+                    Log.i("nelore", "LOOOOPPP");
+                }
+
+            }
+        }
     }
 }
