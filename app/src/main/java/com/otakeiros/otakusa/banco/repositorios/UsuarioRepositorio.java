@@ -84,9 +84,9 @@ public class UsuarioRepositorio {
         @Override
         protected Void doInBackground(String... params) {
             mDao.update_nome(params[1], params[0]);
-            mDao.update_frase(params[2], params[0]);
-            mDao.update_nick(params[3], params[0]);
-            mDao.update_senha(params[4], params[0]);
+            mDao.update_senha(params[2], params[0]);
+            mDao.update_frase(params[3], params[0]);
+            mDao.update_nick(params[4], params[0]);
             mDao.update_habilitado(Boolean.parseBoolean(params[5]),params[0]);
             return null;
         }

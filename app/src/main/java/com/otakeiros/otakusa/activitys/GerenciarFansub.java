@@ -1,13 +1,8 @@
 package com.otakeiros.otakusa.activitys;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,21 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.otakeiros.otakusa.MainActivity;
 import com.otakeiros.otakusa.R;
 import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
 import com.otakeiros.otakusa.banco.dao.FansubDao;
-import com.otakeiros.otakusa.banco.dao.UsuarioDao;
 import com.otakeiros.otakusa.banco.repositorios.FansubRepositorio;
 import com.otakeiros.otakusa.entidades.Fansub;
-import com.otakeiros.otakusa.entidades.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.otakeiros.otakusa.MainActivity.USUARIO_LOGADO;
 
 public class GerenciarFansub extends AppCompatActivity {
     public Toolbar toob;
