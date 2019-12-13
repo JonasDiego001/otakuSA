@@ -1,24 +1,22 @@
 package com.otakeiros.otakusa;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.otakeiros.otakusa.R;
 import com.otakeiros.otakusa.activitys.CadastrarAnimeActivity;
-import com.otakeiros.otakusa.activitys.CadastrarUsuarioActivity;
 import com.otakeiros.otakusa.activitys.GerenciarFansub;
 import com.otakeiros.otakusa.activitys.Login;
 import com.otakeiros.otakusa.activitys.PerfilUsuario;
 
-import java.util.ArrayList;
+import static com.otakeiros.otakusa.activitys.PerfilUsuario.USUARIO_LOGADO_PERFIL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.perfil:
+                USUARIO_LOGADO_PERFIL = USUARIO_LOGADO;
                 intent = new Intent(this, PerfilUsuario.class);
                 startActivity(intent);
                 break;

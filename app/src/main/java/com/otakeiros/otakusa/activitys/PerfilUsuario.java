@@ -1,26 +1,22 @@
 package com.otakeiros.otakusa.activitys;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.otakeiros.otakusa.MainActivity;
 import com.otakeiros.otakusa.R;
 import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
-import com.otakeiros.otakusa.banco.dao.FansubDao;
 import com.otakeiros.otakusa.banco.dao.UsuarioDao;
-import com.otakeiros.otakusa.banco.repositorios.FansubRepositorio;
 import com.otakeiros.otakusa.banco.repositorios.UsuarioRepositorio;
-import com.otakeiros.otakusa.entidades.Fansub;
 import com.otakeiros.otakusa.entidades.Usuario;
 
 import java.util.ArrayList;
@@ -33,12 +29,14 @@ public class PerfilUsuario extends AppCompatActivity {
     private String login;
     private UsuarioRepositorio mRepositorio;
 
-    public String nome;
+    public String nome = null;
     private String nick;
     private String senha;
     private String email;
     private String fraseEfeito;
     private Boolean habilitado;
+    public static String USUARIO_LOGADO_PERFIL = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +51,6 @@ public class PerfilUsuario extends AppCompatActivity {
         mRepositorio = new UsuarioRepositorio(getApplication());
         mDao = db.userDao();
         new validarUsuarioAsyncTask(mDao).execute();
-
-        TextView tv1 = findViewById(R.id.tv_nome_usuario);
-        TextView tv2 = findViewById(R.id.tv_email_usuario);
-        TextView tv3 = findViewById(R.id.tv_nick_usuario);
-        TextView tv4 = findViewById(R.id.tv_fraseEfeito_usuario);
-        tv1.setText(nome);
-        tv2.setText(email);
-        tv3.setText(nick);
-        tv4.setText(fraseEfeito);
     }
 
     public void editar_usuario(View view) {
@@ -95,16 +84,22 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     private void preencherDados(List<Usuario> dados){
-        for(int i = 0; i<dados.size(); i++){
+        for(int i = 0; i != 1; i++){
             if(dados.get(i).getHabilitado() == true) {
                 nome = dados.get(i).getNome();
                 nick = dados.get(i).getNick();
-                senha = dados.get(i).getSenha();
                 email = dados.get(i).getEmail();
                 habilitado = dados.get(i).getHabilitado();
                 fraseEfeito = dados.get(i).getFraseEfeito();
             }
-
+            TextView tv1 = findViewById(R.id.tv_nome_usuario);
+            TextView tv2 = findViewById(R.id.tv_email_usuario);
+            TextView tv3 = findViewById(R.id.tv_nick_usuario);
+            TextView tv4 = findViewById(R.id.tv_fraseEfeito_usuario);
+            tv1.setText(nome);
+            tv2.setText(email);
+            tv3.setText(nick);
+            tv4.setText(fraseEfeito);
         }
     }
     public class validarUsuarioAsyncTask extends AsyncTask<Void, Void, List> {
@@ -117,7 +112,7 @@ public class PerfilUsuario extends AppCompatActivity {
         @Override
         protected List<Usuario> doInBackground(Void... string) {
             List<Usuario> usuarios = new ArrayList<Usuario>();
-            usuarios = dao.get_user(login);
+            usuarios = dao.get_user(USUARIO_LOGADO_PERFIL);
             return usuarios;
         }
 

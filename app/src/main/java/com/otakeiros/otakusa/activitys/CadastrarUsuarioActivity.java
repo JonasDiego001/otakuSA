@@ -1,13 +1,12 @@
 package com.otakeiros.otakusa.activitys;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.otakeiros.otakusa.R;
 import com.otakeiros.otakusa.banco.repositorios.UsuarioRepositorio;
@@ -73,6 +72,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                 user.setNick(nick);
                 user.setNome(nome);
                 user.setSenha(senha);
+                user.setHabilitado(true);
 
                 mRepositorio.inserirUsuario(user);
                 startActivity(new Intent(getApplicationContext(),Login.class));
