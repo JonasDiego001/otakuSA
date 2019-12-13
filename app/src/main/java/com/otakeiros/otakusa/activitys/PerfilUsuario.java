@@ -22,6 +22,14 @@ import com.otakeiros.otakusa.entidades.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.otakeiros.otakusa.activitys.EditarUsuario.nome_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.nick_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.email_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.fraseEfeito_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.senha_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.habilitado_usuario_logado;
+
+
 public class PerfilUsuario extends AppCompatActivity {
     private Integer a;
     public Toolbar toob;
@@ -54,6 +62,12 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     public void editar_usuario(View view) {
+        nome_usuario_logado = nome;
+        nick_usuario_logado = nick;
+        email_usuario_logado = email;
+        senha_usuario_logado = senha;
+        fraseEfeito_usuario_logado = fraseEfeito;
+        habilitado_usuario_logado = habilitado;
         startActivity(new Intent(this,EditarUsuario.class));
     }
 
@@ -91,6 +105,7 @@ public class PerfilUsuario extends AppCompatActivity {
                 email = dados.get(i).getEmail();
                 habilitado = dados.get(i).getHabilitado();
                 fraseEfeito = dados.get(i).getFraseEfeito();
+                senha = dados.get(i).getSenha();
             }
             TextView tv1 = findViewById(R.id.tv_nome_usuario);
             TextView tv2 = findViewById(R.id.tv_email_usuario);

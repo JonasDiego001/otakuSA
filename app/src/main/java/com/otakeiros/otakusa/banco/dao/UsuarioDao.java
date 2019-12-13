@@ -31,14 +31,12 @@ public interface UsuarioDao {
     @Query("UPDATE usuario SET senha=:senha WHERE email=:email")
     void update_senha(String senha,String email);
 
-    @Query("UPDATE usuario SET email =:newEmail WHERE email=:email")
-    void update_email(String newEmail,String email);
-
     @Query("UPDATE usuario SET fraseEfeito =:frase WHERE email=:email")
     void update_frase(String frase,String email);
 
     @Query("UPDATE usuario SET nick =:nick WHERE email=:email")
     void update_nick(String nick,String email);
 
-
+    @Query("UPDATE usuario SET habilitado =:habilitado WHERE email=:email")
+    void update_habilitado(Boolean habilitado,String email);
 }

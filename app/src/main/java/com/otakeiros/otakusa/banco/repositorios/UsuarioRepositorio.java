@@ -2,7 +2,6 @@ package com.otakeiros.otakusa.banco.repositorios;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -10,8 +9,6 @@ import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
 import com.otakeiros.otakusa.banco.dao.UsuarioDao;
 import com.otakeiros.otakusa.entidades.Usuario;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioRepositorio {
@@ -43,8 +40,8 @@ public class UsuarioRepositorio {
         return mDao.getAllUsuario();
     }
 
-    public void updateUser(String email, String newEmail, String nome, String senha, String frase, String nick) {
-        new updateAsyncTask(mDao).execute(email, newEmail, nome, senha, frase, nick);
+    public void updateUser(String email, String nome, String senha, String frase, String nick, Boolean habilitado) {
+        new updateAsyncTask(mDao).execute(email, nome, senha, frase, nick, habilitado.toString());
     }
 
 
@@ -69,12 +66,11 @@ public class UsuarioRepositorio {
 
         @Override
         protected Void doInBackground(String... params) {
-            mDao.update_nome(params[2], params[0]);
-            mDao.update_frase(params[3], params[0]);
-            mDao.update_nick(params[4], params[0]);
-            mDao.update_senha(params[5], params[0]);
-            ///COMO O EMAIL É CHAVE PRIMARIA, DEVE SER ATUALIZADO POR ULTIMO
-            mDao.update_email(params[1], params[0]);
+            mDao.update_nome(params[1], params[0]);
+            mDao.update_frase(params[2], params[0]);
+            mDao.update_nick(params[3], params[0]);
+            mDao.update_senha(params[4], params[0]);
+            mDao.update_habilitado(Boolean.parseBoolean(params[5]),params[0]);
             return null;
         }
     }

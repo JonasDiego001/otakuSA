@@ -14,31 +14,85 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary">
     </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/tv_nome_usuario"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="76dp" />
-    <TextView
-        android:id="@+id/tv_email_usuario"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome: "
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+        <TextView
+            android:id="@+id/tv_nome_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+    </LinearLayout>>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="76dp" />
-    <TextView
-        android:id="@+id/tv_nick_usuario"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_emailss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+        <TextView
+            android:id="@+id/tv_email_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="76dp" />
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_nicss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nick: "
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+        <TextView
+            android:id="@+id/tv_nick_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_fraseEfeito_usuarioss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frase Efeito: "
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="76dp" />
     <TextView
         android:id="@+id/tv_fraseEfeito_usuario"
         android:layout_width="wrap_content"
@@ -47,6 +101,7 @@
         android:textSize="20sp"
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="76dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/editarUsuario"
