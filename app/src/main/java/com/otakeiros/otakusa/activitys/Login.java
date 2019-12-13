@@ -1,8 +1,5 @@
 package com.otakeiros.otakusa.activitys;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,14 +7,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.otakeiros.otakusa.MainActivity;
 import com.otakeiros.otakusa.R;
 import com.otakeiros.otakusa.banco.dao.EntitysRoomDatabase;
 import com.otakeiros.otakusa.banco.dao.UsuarioDao;
 import com.otakeiros.otakusa.banco.repositorios.UsuarioRepositorio;
 import com.otakeiros.otakusa.entidades.Usuario;
-
-import java.security.spec.ECField;
 
 import static com.otakeiros.otakusa.MainActivity.USUARIO_LOGADO;
 
@@ -72,7 +70,7 @@ public class Login extends AppCompatActivity {
         protected Boolean doInBackground(String... string) {
             Usuario user = new Usuario();
             try{
-                user = dao.get_user(string[0]).get(0);
+                user = dao.get_user(string[0], true).get(0);
                 if (string[1].equals(user.getSenha()))
                     return true;
             }catch (Exception e){

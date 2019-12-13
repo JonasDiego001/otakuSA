@@ -102,6 +102,14 @@
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="76dp" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_habilitado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="76dp" />
 
     <Button
         android:id="@+id/editarUsuario"
@@ -118,7 +126,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
-        android:onClick="editar_usuario"
-        android:text="editar" />
+        android:text="Apagar" />
 
 </LinearLayout>

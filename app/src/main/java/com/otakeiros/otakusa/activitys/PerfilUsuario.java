@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,12 +23,12 @@ import com.otakeiros.otakusa.entidades.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.otakeiros.otakusa.activitys.EditarUsuario.nome_usuario_logado;
-import static com.otakeiros.otakusa.activitys.EditarUsuario.nick_usuario_logado;
 import static com.otakeiros.otakusa.activitys.EditarUsuario.email_usuario_logado;
 import static com.otakeiros.otakusa.activitys.EditarUsuario.fraseEfeito_usuario_logado;
-import static com.otakeiros.otakusa.activitys.EditarUsuario.senha_usuario_logado;
 import static com.otakeiros.otakusa.activitys.EditarUsuario.habilitado_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.nick_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.nome_usuario_logado;
+import static com.otakeiros.otakusa.activitys.EditarUsuario.senha_usuario_logado;
 
 
 public class PerfilUsuario extends AppCompatActivity {
@@ -59,6 +60,17 @@ public class PerfilUsuario extends AppCompatActivity {
         mRepositorio = new UsuarioRepositorio(getApplication());
         mDao = db.userDao();
         new validarUsuarioAsyncTask(mDao).execute();
+
+        Button deletar = findViewById(R.id.apagarUsuario);
+        deletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRepositorio.deleteAllUser(false, email);
+                Intent intent = new Intent(PerfilUsuario.this, Login.class);
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
     public void editar_usuario(View view) {
@@ -111,10 +123,12 @@ public class PerfilUsuario extends AppCompatActivity {
             TextView tv2 = findViewById(R.id.tv_email_usuario);
             TextView tv3 = findViewById(R.id.tv_nick_usuario);
             TextView tv4 = findViewById(R.id.tv_fraseEfeito_usuario);
+            TextView tv5 = findViewById(R.id.tv_habilitado);
             tv1.setText(nome);
             tv2.setText(email);
             tv3.setText(nick);
             tv4.setText(fraseEfeito);
+            tv5.setText(habilitado.toString());
         }
     }
     public class validarUsuarioAsyncTask extends AsyncTask<Void, Void, List> {
@@ -127,7 +141,7 @@ public class PerfilUsuario extends AppCompatActivity {
         @Override
         protected List<Usuario> doInBackground(Void... string) {
             List<Usuario> usuarios = new ArrayList<Usuario>();
-            usuarios = dao.get_user(USUARIO_LOGADO_PERFIL);
+            usuarios = dao.get_user(USUARIO_LOGADO_PERFIL,true);
             return usuarios;
         }
 

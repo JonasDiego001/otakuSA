@@ -2,6 +2,7 @@ package com.otakeiros.otakusa.banco.repositorios;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -26,13 +27,17 @@ public class UsuarioRepositorio {
         new insertAsyncTask(mDao).execute(user);
     }
 
-    public void deleteAllUser() {
-        mDao.delete_all_users();
+    public void deleteAllUser(Boolean habilitado, String email) {
+        Usuario aux = new Usuario();
+        aux.setHabilitado(habilitado);
+        aux.setEmail(email);
+        Log.i("NELORE", email);
+        new daleAsyncTask(mDao).execute(aux);
     }
 
-    public List<Usuario> getUser(String email) {
+    public List<Usuario> getUser(String email, Boolean habilitado) {
         List<Usuario> user;
-        user = mDao.get_user(email);
+        user = mDao.get_user(email, habilitado);
         return user;
     }
 
@@ -55,15 +60,27 @@ public class UsuarioRepositorio {
             return null;
         }
     }
-
-    private class updateAsyncTask extends AsyncTask<String, Void, Void> {
-
+    private class daleAsyncTask extends AsyncTask<Usuario, Void, Void> {
         UsuarioDao mDao;
-
-        public updateAsyncTask(UsuarioDao dao) {
+        public daleAsyncTask(UsuarioDao dao) {
             mDao = dao;
         }
 
+        @Override
+        protected Void doInBackground(Usuario... usuarios) {
+            Log.i("vai dar", ""+usuarios[0].getHabilitado());
+            Log.i("que vai", usuarios[0].getEmail());
+            mDao.delete_all_user(usuarios[0].getHabilitado(),usuarios[0].getEmail());
+            return null;
+        }
+    }
+
+
+    private class updateAsyncTask extends AsyncTask<String, Void, Void> {
+        UsuarioDao mDao;
+        public updateAsyncTask(UsuarioDao dao) {
+            mDao = dao;
+        }
         @Override
         protected Void doInBackground(String... params) {
             mDao.update_nome(params[1], params[0]);

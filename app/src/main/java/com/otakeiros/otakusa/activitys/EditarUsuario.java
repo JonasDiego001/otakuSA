@@ -50,10 +50,10 @@ public class EditarUsuario extends AppCompatActivity {
         String confirmacao_senha;
 
         EditText et_nome = findViewById(R.id.et_nome_usuario);
-        EditText et_senha = findViewById(R.id.et_senha_usuario_cadastro_usuario);
         EditText et_nick = findViewById(R.id.et_nick);
-        EditText et_frase = findViewById(R.id.et_frase_efeito_usuario_cadastro);
+        EditText et_senha = findViewById(R.id.et_senha_usuario_cadastro_usuario);
         EditText et_conirmacao_senha = findViewById(R.id.et_confirmacao_senha_cadastro_usuario);
+        EditText et_frase = findViewById(R.id.et_frase_efeito_usuario_cadastro);
 
 
 

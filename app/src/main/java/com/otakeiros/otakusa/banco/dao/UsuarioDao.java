@@ -16,11 +16,11 @@ public interface UsuarioDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert_usuario(Usuario user);
 
-    @Query("DELETE FROM usuario")
-    void delete_all_users();
+    @Query("UPDATE usuario SET habilitado=:habilitado WHERE email=:email")
+    void delete_all_user(Boolean habilitado,String email);
 
-    @Query("SELECT * FROM usuario WHERE email=:email")
-    List<Usuario>get_user(String email);
+    @Query("SELECT * FROM usuario WHERE email=:email AND habilitado=:habilitado")
+    List<Usuario>get_user(String email, Boolean habilitado);
 
     @Query("SELECT  * FROM usuario")
     LiveData<List<Usuario>>getAllUsuario();
