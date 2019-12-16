@@ -70,5 +70,4 @@ public class Usuario {
     }
 
     private String fraseEfeito;
-
 }

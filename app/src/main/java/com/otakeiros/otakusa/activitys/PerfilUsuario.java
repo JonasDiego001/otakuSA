@@ -97,14 +97,6 @@ public class PerfilUsuario extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.gerenciarFansub:
-                intent = new Intent(this, GerenciarFansub.class);
-                startActivity(intent);
-                break;
-            case R.id.cadastrarAnime:
-                intent = new Intent(this, CadastrarAnimeActivity.class);
-                startActivity(intent);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }

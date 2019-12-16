@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 public class Anime {
 
 
-    @PrimaryKey
+    @PrimaryKey (autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
     private Integer id;
