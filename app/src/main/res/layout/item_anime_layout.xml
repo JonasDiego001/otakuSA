@@ -37,9 +37,7 @@
             <ImageView
                 android:id="@+id/iv_image_anime_item"
                 android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@color/colorPrimaryDark"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:layout_height="150dp"/>
 
             <TextView
                 android:id="@+id/tv_nome_item"

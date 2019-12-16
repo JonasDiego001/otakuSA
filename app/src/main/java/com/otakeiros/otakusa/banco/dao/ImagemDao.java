@@ -21,12 +21,12 @@ public interface ImagemDao {
     void delete_all_imagem();
 
     @Query("SELECT * FROM imagem WHERE id=:id")
-    List<Imagem>get_fansub(Integer id);
+    List<Imagem>getImagem(Integer id);
 
     @Query("SELECT  * FROM imagem")
-    LiveData<List<Imagem>>getAllFansub();
+    LiveData<List<Imagem>>getAllImagem();
 
     @Query("UPDATE imagem SET caminoImagem =:caminoImagem WHERE id=:id")
-    void update_fansub(String caminoImagem, Integer id);
+    void updateImagem(String caminoImagem, Integer id);
 
 }

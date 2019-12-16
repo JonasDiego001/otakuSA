@@ -11,7 +11,7 @@ public class Imagem {
     @ColumnInfo(name = "caminoImagem")
     private String caminoImagem;
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
     private Integer id;
